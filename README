@@ -1,0 +1,26 @@
+ndk-on-msys
+
+-- What drive me --
+Android NDK require cygwin to build code.
+But for who use mingw+msys, as me, it is not a good idea to install cygwin.
+So i write this script to run NDK on msys.
+
+-- Install --
+place ndk-msys-build and msys_build to NDK home directory.
+
+-- Usage --
+use command ndk-msys-build insted of ndk-build, like below:
+<NDK>/ndk-msys-build
+
+-- Package structure --
+¨T¨j¨T¨T
+ ¨d¨T¨T ndk-msys-build
+ ¨^¨T¨j msys_build
+   ¨d¨T¨T cygwin1.dll
+   ¨^¨T¨T cygz.dll
+
+ndk-msys-build: the wrap script around ndk-build
+cygwin1.dll: extract from cygwin/cygwin-1.7.7-1.tar.bz2
+cygz.dll: extract from cygwin/zlib-1.2.3-2.tar.bz2
+
+-- End --

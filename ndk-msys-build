@@ -1,0 +1,27 @@
+#!/bin/sh
+ANDROID_NDK_HOME=`dirname $0`
+
+# force cygwin1.dll and cygz.dll to be found
+export PATH=$ANDROID_NDK_HOME/msys_build:.:/bin
+
+# enable this to turn off the "MS-DOS style path detected" cygwin warning
+export CYGWIN=nodosfilewarning
+
+# this may be used to fix "arm-eabi-gcc: D:/MSYS/bin/../lib/gcc/arm-eabi/4.4.0/libgcc.a: No such file or directory"
+#if [ ! -d "/usr/lib/gcc/arm-eabi" ]; then
+#	if [ ! -d "/usr/lib/gcc" ]; then
+#		mkdir -p /usr/lib/gcc
+#	fi
+#	ln -s $ANDROID_NDK_HOME/build/prebuilt/windows/arm-eabi-4.4.0/lib/gcc/arm-eabi /usr/lib/gcc/arm-eabi
+#fi
+
+# this may be used to fix "arm-eabi-gcc: D:/MSYS/build/prebuilt/windows/arm-eabi-4.4.0/lib/gcc/arm-eabi/4.4.0/libgcc.a: No such file or directory"
+if [ ! -d "/build/prebuilt" ]; then
+	if [ ! -d "/build" ]; then
+		mkdir -p /build
+	fi
+	ln -s $ANDROID_NDK_HOME/build/prebuilt /build/prebuilt
+fi
+
+#echo `env|grep PATH`
+$ANDROID_NDK_HOME/ndk-build $@
