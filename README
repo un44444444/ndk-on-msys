@@ -13,14 +13,21 @@ use command ndk-msys-build insted of ndk-build, like below:
 <NDK>/ndk-msys-build
 
 -- Package structure --
-¨T¨j¨T¨T
- ¨d¨T¨T ndk-msys-build
- ¨^¨T¨j msys_build
-   ¨d¨T¨T cygwin1.dll
-   ¨^¨T¨T cygz.dll
+-+--
+ |-- ndk-msys-build
+ \-- msys_build
+   +-- cygwin1.dll
+   \-- cygz.dll
 
 ndk-msys-build: the wrap script around ndk-build
 cygwin1.dll: extract from cygwin/cygwin-1.7.7-1.tar.bz2
 cygz.dll: extract from cygwin/zlib-1.2.3-2.tar.bz2
+
+-- Work envirement --
+Android NDK:
+android-ndk-r4b
+Msys:
+$ uname -a
+MINGW32_NT-5.1 MyComputer 1.0.11(0.46/3/2) 2009-07-11 17:46 i686 Msys
 
 -- End --
